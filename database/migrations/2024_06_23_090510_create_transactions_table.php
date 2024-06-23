@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('users_id');
+            $table->text('address')->nullable();
+            $table->float('total_price');
+            $table->float('shipping_price');
+            $table->string('status')->default('PENDING');
+            $table->string('payment')->default('MANUAL');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
